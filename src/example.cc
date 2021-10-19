@@ -54,13 +54,11 @@ int main()
     //  call the method
     method_call2(match2.pathTemplate(),match2.http_verb());
 
-
     // another test
     std::string service_name = match2["serviceName"];
     std::string cube_name = match2["cubeName"];
     
     std::cout << "service name " << service_name << " and cube name " << cube_name << std::endl;
-
 
     return 0;
 }

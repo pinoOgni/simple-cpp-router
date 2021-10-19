@@ -14,8 +14,7 @@ add_library(routing SHARED
     Routing/Details/StringTokenizer.cpp Routing/Details/StringTokenizer.h
 )
 
-
-# Target client
+# Target client example
 foreach(_target
   example)
   add_executable(${_target} "${_target}.cc")
