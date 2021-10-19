@@ -17,6 +17,11 @@ public:
     std::string path() const { return _path; }
 
     /**
+     * @brief Get actual http_verb (e.g GET)
+     */
+    std::string http_verb() const { return _http_verb; }
+
+    /**
      * @brief Get path template (e.g. /some/path or /some/:dynamic/path)
      * @returns path template
      */
@@ -44,12 +49,13 @@ public:
 
 
 protected:
-    PathMatch(std::string path, Details::PathTemplate const &tpl);
+    PathMatch(std::string path, Details::PathTemplate const &tpl, std::string http_verb);
 
 private:
     std::string _path;
     Details::StringTokenizer _tokenizer;
     Details::PathTemplate _pathTemplate;
+    std::string _http_verb;
 };
 
 }

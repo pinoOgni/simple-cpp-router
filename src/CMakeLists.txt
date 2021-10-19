@@ -13,3 +13,12 @@ add_library(routing SHARED
     Routing/Details/PathTemplateParser.cpp Routing/Details/PathTemplateParser.h
     Routing/Details/StringTokenizer.cpp Routing/Details/StringTokenizer.h
 )
+
+
+# Target client
+foreach(_target
+  example)
+  add_executable(${_target} "${_target}.cc")
+  target_link_libraries(${_target}
+  routing)
+endforeach()

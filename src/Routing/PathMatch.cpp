@@ -3,15 +3,14 @@
 
 namespace Routing {
 
-PathMatch::PathMatch(std::string path, Details::PathTemplate const &tpl)
-: _path(path), _pathTemplate(tpl), _tokenizer(path, '/') {
+PathMatch::PathMatch(std::string path, Details::PathTemplate const &tpl, std::string http_verb)
+: _path(path), _pathTemplate(tpl), _tokenizer(path, '/'), _http_verb(http_verb) {
 
 }
 
 std::string PathMatch::getVar(std::string const &name) const {
     if (!_pathTemplate.parser().hasDynVar(name)) {
-        throw NoSuchElementException("Path [" + _path + "] with template [" + _pathTemplate.templ() + "]" +
-                                     "does not contain variable '" + name + "'");
+        return "";
     }
 
     int pos = _pathTemplate.parser().getDynVarPos(name);
